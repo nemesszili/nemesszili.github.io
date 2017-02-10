@@ -98,6 +98,7 @@ y = sorted(y)
 ```
 
 Now let's plot this thing:
+
 ```
 x = range(1, len(y) + 1)
 plt.plot(x, y)
