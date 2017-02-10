@@ -5,7 +5,7 @@ description:
 baseurl:             #""
 url:                 #"http://localhost:4000"
 github:
-  url:               "http://nemesszili.github.io"
+  url:               "https://nemesszili.github.io"
 author:
   name:              "Szilárd Nemes"
   email:             "nemesszili@gmail.com"
