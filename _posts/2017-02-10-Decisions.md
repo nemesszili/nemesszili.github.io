@@ -5,7 +5,7 @@ categories: journal
 tags: [job, cash-it, salary]
 image:
   feature: typing.jpg
-  teaser: typing-teaser.jpg
+  teaser: typing.jpg
   credit:
   creditlink: ""
 ---

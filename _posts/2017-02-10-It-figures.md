@@ -32,29 +32,29 @@ This is great and all, but I want to see this pile of data from another perspect
 
 Oh great, check this out! A JSON!
 
-![Data1]({{ site.url }}/images/data1.jpg)
+![Data1]({{ site.url }}/images/2017-02-10-It-figures/data1.jpg)
 
 Not the one. It's just used to autocomplete your queries. Let's look some more:
 
-![Data2](../images/data2.jpg)
+![Data2](/images/2017-02-10-It-figures/data2.jpg)
 
 Aha, now we're getting warmer. So if I do a POST to cash-it.xyz with these parameters, I should be getting an HTML with a table containing precious data. Let's fire up Postman and test it.
 
-![Postman](/images/postman1.jpg)
+![Postman](/images/2017-02-10-It-figures/postman1.jpg)
 
 Nope, this won't work, the table is empty. What am I missing? 
 
 Time to use Wireshark to find out what happens when I hit the Search button in the form:
 
-![Wireshark1](/images/wireshark1.jpg)
+![Wireshark1](/images/2017-02-10-It-figures/wireshark1.jpg)
 
 Cool, let's try POSTing with Postman again:
 
-![Wireshark2](/images/wireshark2.jpg)
+![Wireshark2](/images/2017-02-10-It-figures/wireshark2.jpg)
 
 The difference is pretty obvious: Postman sends the request with `multipart/form-data`, while Chrome does it with `application/x-www-form-urlencoded`. The difference is explained [here](http://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data). After a bit of fiddling, it works like a charm with Postman as well.
 
-![Wireshark3](/images/wireshark3.jpg)
+![Wireshark3](/images/2017-02-10-It-figures/wireshark3.jpg)
 
 ### Script it!
 
@@ -62,7 +62,7 @@ Now that we have a way of fetching data, time to display it. Weapon of choice: _
 
 Some code to make the `application/x-www-form-urlencoded` request:
 
-```
+```python
 url = 'http://46.101.181.43'
 values = {'searchCompanyName' : '',
           'searchLocation' : '',
@@ -77,13 +77,13 @@ the_page = response.read()
 
 An HTML parsing library would be pretty neat. _Lucky me that I'm doing this in Python_: `pip install beautifulsoup4`
 
-![Perfect](/images/perfect_small.jpg)
+![Perfect](/images/2017-02-10-It-figures/perfect_small.jpg)
 
 There is a Python library for everything. _Life is great._
 
 About this much is enough to put all salaries in vector y:
 
-```
+```python
 y = []
 
 soup = BeautifulSoup(the_page, 'html.parser')
@@ -99,7 +99,7 @@ y = sorted(y)
 
 Now let's plot this thing:
 
-```
+```python
 x = range(1, len(y) + 1)
 plt.plot(x, y)
 plt.xlabel('Reports')
@@ -111,5 +111,5 @@ plt.show()
 
 I think I like what I'm seeing.
 
-![Plot](/images/plot.jpg)
+![Plot](/images/2017-02-10-It-figures/plot.jpg)
 
