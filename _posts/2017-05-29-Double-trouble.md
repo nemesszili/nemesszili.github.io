@@ -264,7 +264,7 @@ dhcp-range=192.168.0.2,192.168.0.20,255.255.255.0,24h
 The file should contain only the following:
 ```
 interface=wlan1
-driver=nl80211
+driver=rtl871xdrv
 ssid=Pi_AP
 hw_mode=g
 channel=7
